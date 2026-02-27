@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sabhyata Digital Library</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+/* Background */
+
+body{
+margin:0;
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background: linear-gradient(180deg,#8b5a2b,#a97142,#c58a5a);
+font-family:Poppins;
+overflow:hidden;
+}
+
+/* Floating Stars */
+
+.star{
+position:absolute;
+width:4px;
+height:4px;
+background:#fff8e7;
+box-shadow:0 0 10px white;
+border-radius:50%;
+animation: floatStar 6s linear infinite;
+opacity:0.8;
+}
+
+@keyframes floatStar{
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
+}
+
+/* Glass Card */
+
+.card{
+width:90%;
+max-width:400px;
+background:rgba(255,255,255,0.12);
+backdrop-filter: blur(15px);
+padding:28px;
+border-radius:30px;
+text-align:center;
+box-shadow:0 0 25px rgba(0,0,0,0.15);
+}
+
+.title{
+font-family:'Playfair Display';
+font-size:30px;
+color:#fff5e6;
+}
+
+/* Input Style */
+
+input{
+width:90%;
+padding:13px;
+margin:10px;
+border-radius:18px;
+border:none;
+font-size:15px;
+background:rgba(255,255,255,0.9);
+}
+
+button{
+background:#d9a066;
+border:none;
+padding:14px 30px;
+border-radius:25px;
+font-size:16px;
+color:white;
+cursor:pointer;
+margin-top:15px;
+}
+
+button:hover{
+background:#c98a4a;
+}
+
+#timeBox{
+color:white;
+margin-top:10px;
+font-weight:600;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Floating Stars Background -->
+<script>
+for(let i=0;i<40;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+star.style.animationDuration=(4+Math.random()*6)+"s";
+document.body.appendChild(star);
+}
+</script>
+
+<div class="card">
+
+<div class="title">📚 Sabhyata Digital Library</div>
+
+<p style="color:#ffe8cc">Attendance Portal</p>
+
+<input id="name" placeholder="Enter Full Name">
+
+<input id="age" placeholder="Enter Age" type="number">
+
+<input id="date" type="text" readonly placeholder="Date">
+
+<input id="time" type="text" readonly placeholder="Time">
+
+<br>
+
+<button onclick="submitAttendance()">
+✔ Mark Attendance
+</button>
+
+<p id="msg" style="color:white"></p>
+
+</div>
+
+<script>
+
+/* Auto Date Time Sync */
+
+function updateTime(){
+
+let now=new Date();
+
+document.getElementById("date").value=
+now.toDateString();
+
+document.getElementById("time").value=
+now.toLocaleTimeString();
+
+}
+
+setInterval(updateTime,1000);
+
+/* Attendance Save */
+
+function submitAttendance(){
+
+let name=document.getElementById("name").value;
+let age=document.getElementById("age").value;
+
+if(name===""){
+alert("Please enter your name");
+return;
+}
+
+localStorage.setItem("user",
+JSON.stringify({
+name:name,
+age:age,
+time:new Date().toLocaleString()
+}));
+
+alert("✔ Attendance Recorded");
+
+}
+
+</script>
+
+</body>
+</html>
