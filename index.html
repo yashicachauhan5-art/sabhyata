@@ -43,7 +43,7 @@ opacity:0.8;
 100%{transform:translateY(-100vh);}
 }
 
-/* Glass Card */
+/* Card */
 
 .card{
 width:90%;
@@ -56,13 +56,15 @@ text-align:center;
 box-shadow:0 0 25px rgba(0,0,0,0.15);
 }
 
+/* Title */
+
 .title{
 font-family:'Playfair Display';
 font-size:30px;
 color:#fff5e6;
 }
 
-/* Input Style */
+/* Inputs */
 
 input{
 width:90%;
@@ -74,6 +76,8 @@ font-size:15px;
 background:rgba(255,255,255,0.9);
 }
 
+/* Button */
+
 button{
 background:#d9a066;
 border:none;
@@ -83,10 +87,12 @@ font-size:16px;
 color:white;
 cursor:pointer;
 margin-top:15px;
+transition:0.3s;
 }
 
 button:hover{
 background:#c98a4a;
+transform:scale(1.05);
 }
 
 #timeBox{
@@ -101,7 +107,7 @@ font-weight:600;
 
 <body>
 
-<!-- Floating Stars Background -->
+<!-- Floating Stars -->
 <script>
 for(let i=0;i<40;i++){
 let star=document.createElement("div");
@@ -155,7 +161,7 @@ now.toLocaleTimeString();
 
 setInterval(updateTime,1000);
 
-/* Attendance Save */
+/* Attendance Submit + Redirect */
 
 function submitAttendance(){
 
@@ -167,6 +173,8 @@ alert("Please enter your name");
 return;
 }
 
+/* Save Data */
+
 localStorage.setItem("user",
 JSON.stringify({
 name:name,
@@ -175,6 +183,12 @@ time:new Date().toLocaleString()
 }));
 
 alert("✔ Attendance Recorded");
+
+/* Redirect to Homepage */
+
+setTimeout(()=>{
+window.location="home.html";
+},1000);
 
 }
 
