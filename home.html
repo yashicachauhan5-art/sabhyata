@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sabhyata Library Home</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;600&family=Playfair+Display:wght@700&family=Quicksand:wght@600&display=swap" rel="stylesheet">
+
+<style>
+
+/* Background */
+
+body{
+margin:0;
+font-family:Poppins;
+background: linear-gradient(180deg,#f5e6d3,#fbe9d0,#fdf3e3);
+text-align:center;
+overflow:auto;
+}
+
+/* Floating Stars */
+
+.star{
+position:absolute;
+width:4px;
+height:4px;
+background:white;
+box-shadow:0 0 10px white;
+border-radius:50%;
+animation: floatStar 8s linear infinite;
+opacity:0.7;
+}
+
+@keyframes floatStar{
+0%{transform:translateY(0);}
+100%{transform:translateY(-100vh);}
+}
+
+/* Top Navigation */
+
+.topbar{
+padding:15px;
+}
+
+.chatbotTop{
+background:#6c5ce7;
+color:white;
+border:none;
+padding:12px 25px;
+border-radius:25px;
+font-family:Quicksand;
+font-size:17px;
+cursor:pointer;
+box-shadow:0 0 12px rgba(108,92,231,0.5);
+}
+
+/* Title */
+
+.title{
+font-family:Playfair Display;
+font-size:35px;
+color:#6b4f3f;
+margin-top:20px;
+text-shadow:0 0 12px white;
+}
+
+/* Panel */
+
+.panel{
+color:#6b4f3f;
+margin-top:10px;
+font-weight:600;
+}
+
+/* Scroll Container */
+
+.container{
+padding-bottom:120px;
+}
+
+/* Buttons */
+
+.btn{
+display:block;
+width:85%;
+margin:15px auto;
+padding:18px;
+border:none;
+border-radius:35px;
+font-size:18px;
+font-family:Quicksand;
+font-weight:700;
+color:white;
+cursor:pointer;
+box-shadow:0 0 15px rgba(0,0,0,0.2);
+transition:0.4s;
+letter-spacing:1px;
+position:relative;
+overflow:hidden;
+}
+
+/* Sparkle Effect */
+
+.btn::after{
+content:"✨";
+position:absolute;
+right:20px;
+opacity:0.8;
+}
+
+.btn:hover{
+transform:scale(1.07);
+filter:brightness(1.1);
+}
+
+/* Multi Color Glow Buttons */
+
+.novels{ background:#d98880; }
+.freedom{ background:#c39bd3; }
+.kids{ background:#f7dc6f; color:black; }
+.medical{ background:#82e0aa; }
+.engineering{ background:#85c1e9; }
+.design{ background:#f5b7b1; }
+.magazines{ background:#d7bde2; }
+.newspaper{ background:#f0b27a; }
+.academic{ background:#76d7c4; }
+.career{ background:#a9cce3; }
+.comics{ background:#f9e79f; color:black; }
+.auto{ background:#e6b0aa; }
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Floating Stars -->
+<script>
+for(let i=0;i<50;i++){
+let star=document.createElement("div");
+star.className="star";
+star.style.left=Math.random()*100+"vw";
+star.style.top=Math.random()*100+"vh";
+star.style.animationDuration=(5+Math.random()*6)+"s";
+document.body.appendChild(star);
+}
+</script>
+
+<!-- Top Chatbot Button -->
+<div class="topbar">
+<button class="chatbotTop" onclick="alert('Chatbot Sangam Coming Soon!')">
+🤖 Talk to AI Chatbot Sangam
+</button>
+</div>
+
+<div class="container">
+
+<div class="title">✨ Welcome to Sabhyata Digital Library</div>
+
+<div class="panel" id="userText"></div>
+
+<div class="panel">
+Reception Panel — Yashica | Tapasvi | Bhumika | Sana
+</div>
+
+<br>
+
+<button class="btn novels">📖 Novels</button>
+<button class="btn freedom">🏛 Freedom Fighters</button>
+<button class="btn kids">👶 Kids Section</button>
+<button class="btn medical">🩺 Medical</button>
+<button class="btn engineering">⚙ Engineering</button>
+<button class="btn design">🎨 Designing</button>
+<button class="btn magazines">📰 Magazines</button>
+<button class="btn newspaper">🗞 Newspapers</button>
+<button class="btn academic">📚 Academics</button>
+<button class="btn career">🚀 Career Counselling</button>
+<button class="btn comics">🦸 Comics</button>
+<button class="btn auto">📜 Autobiographies</button>
+
+</div>
+
+<!-- Background Music -->
+
+<audio autoplay loop>
+<source src="assets/music.mp3">
+</audio>
+
+<script>
+
+/* Show Username */
+
+let user=JSON.parse(localStorage.getItem("user"));
+
+if(user){
+document.getElementById("userText").innerHTML=
+"Dear User — "+user.name;
+}
+
+/* Button Click Effects */
+
+document.querySelectorAll(".btn").forEach(btn=>{
+btn.onclick=()=>alert("Section Coming Soon!");
+});
+
+</script>
+
+</body>
+</html>
